@@ -456,12 +456,12 @@ if __name__ == "__main__":
             port=port
         )
     else:
-        # Local development: use self-signed SSL certs
+        # Local development: run on HTTP to avoid self-signed certificate issues
         uvicorn.run(
             "main:app", 
             host="0.0.0.0", 
             port=port, 
-            reload=True,
-            ssl_keyfile="key.pem", 
-            ssl_certfile="cert.pem"
+            reload=True
+            # ssl_keyfile="key.pem", 
+            # ssl_certfile="cert.pem"
         )
