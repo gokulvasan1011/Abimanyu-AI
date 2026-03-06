@@ -16,7 +16,13 @@ class AIService:
         # Configure Gemini
         if self.gemini_key and "your_" not in self.gemini_key.lower():
             genai.configure(api_key=self.gemini_key)
-            self.gemini_model = genai.GenerativeModel('gemini-1.5-flash')
+            self.gemini_model = genai.GenerativeModel(
+                model_name='gemini-1.5-flash',
+                generation_config={
+                    "temperature": 0.8,
+                    "top_p": 0.9,
+                }
+            )
         else:
             self.gemini_model = None
             
@@ -72,7 +78,9 @@ class AIService:
             
             response = self.openai_client.chat.completions.create(
                 model="gpt-4o-mini",
-                messages=messages
+                messages=messages,
+                temperature=0.8,
+                top_p=0.9
             )
             return response.choices[0].message.content.strip()
         except Exception as e:
