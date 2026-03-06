@@ -459,9 +459,9 @@ if __name__ == "__main__":
         # Local development: run on HTTP to avoid self-signed certificate issues
         uvicorn.run(
             "main:app", 
-            host="0.0.0.0", 
+            host="127.0.0.1", 
             port=port, 
-            reload=True
+            reload=True,
             # ssl_keyfile="key.pem", 
             # ssl_certfile="cert.pem"
         )

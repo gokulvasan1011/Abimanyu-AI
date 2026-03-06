@@ -19,5 +19,6 @@ Write-Host "Starting Frontend..." -ForegroundColor Green
 $FrontendProcess = Start-Process -FilePath "powershell.exe" -ArgumentList "-NoExit -Command `$env:Path += ';C:\Program Files\nodejs'; cd frontend; npm run dev" -PassThru
 
 Write-Host "Both processes are starting in separate windows." -ForegroundColor Cyan
-Write-Host "Backend: https://localhost:8000"
-Write-Host "Frontend: https://localhost:8080 (or 8081 if occupied)"
+Write-Host "Backend (API): http://127.0.0.1:8000"
+Write-Host "Frontend (UI): http://127.0.0.1:8080 (or 8081 if occupied)"
+Write-Host "Note: HTTPS has been disabled for easier local development. Use HTTP." -ForegroundColor Yellow
